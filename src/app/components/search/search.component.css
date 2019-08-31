@@ -1,0 +1,29 @@
+.input-group {
+  max-width: 460px;
+}
+
+.search-input {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;      
+  font-weight: bold;
+  color: aliceblue !important;
+  font-size: 1.5em;
+  text-shadow: 0px 0px 10px rgba(255,255,255,1);
+}
+
+::placeholder{
+  color: aliceblue !important;    
+}
+
+li.list-group-item:first-of-type {
+  border-top: none;
+}
+
+input:focus {
+  box-shadow: none;
+}
+
+.border-default {
+  border-bottom: 2px solid #ccd4da; 
+}

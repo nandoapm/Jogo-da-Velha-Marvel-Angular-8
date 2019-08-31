@@ -3,7 +3,7 @@
     <div class="main">
         <div class="section" id="col">
             <div class="">
-                <img class="imgPlayer" [src]="player1 ? player1.image : defaultThumbnail">
+                <img class="imgPlayer" [src]="player1 ? player1.image : bgImage">
             </div>
             <app-search (selectedHero)="getCharacter($event, 1)" placeholder="PERSONAGEM 1"></app-search>
         </div>
@@ -13,7 +13,7 @@
         </div>
         <div class="section" id="col">
             <div class="">
-                <img class="imgPlayer" [src]="player2 ? player2.image : defaultThumbnail">
+                <img class="imgPlayer" [src]="player2 ? player2.image : bgImage">
             </div>
             <app-search (selectedHero)="getCharacter($event, 2) " placeholder="PERSONAGEM 2"></app-search>
         </div>

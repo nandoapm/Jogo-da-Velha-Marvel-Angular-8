@@ -9,30 +9,14 @@ import { Md5 } from 'ts-md5';
   providedIn: 'root'
 })
 export class MarvelService {
-  private ApiUrl = 'https://gateway.marvel.com/v1/public/';
+  private ApiUrl = 'http://gateway.marvel.com/v1/public/';
   private publicKey = 'd471b9d853c2fad145cd5dab65761c29';
   private privateKey = '696876de1bc1cc70563bfe7f6bdbdf7b50530370';
-  http: any;
 
-  constructor(private httpClient: HttpClient) { }
-  getTimeStamp(): string {
-    return (Date.now() / 1000 | 0).toString();
-  }
-
-  getPublicKey(): string {
-    return this.publicKey;
-  }
-
-  getHash(timeStamp: string): string {
-    const hashGenerator: Md5 = new Md5();
-    hashGenerator.appendStr(timeStamp);
-    hashGenerator.appendStr(this.privateKey);
-    hashGenerator.appendStr(this.publicKey);
-    const hash: string = hashGenerator.end().toString();
-    return hash;
-  }
-
-  characterByName(name: string, by: string) {
+  constructor(private http: HttpClient) { }
+  
+  // buscar o personagem na api
+  getCharacter(name: string, by: string) {
     const url =  this.ApiUrl + 'characters?' + by + '=' + name;
     return this.http.get(url).pipe(
       map((response: any) => {
@@ -42,8 +26,25 @@ export class MarvelService {
           characters.push(character);
         });
         return characters;
-        
       })
     );
+  }
+  
+  // gerar credenciais
+  generateTimeStamp(): string {
+    return (Date.now() / 1000 | 0).toString();
+  }
+
+  getPublicKey(): string {
+    return this.publicKey;
+  }
+  
+  generateHash(timeStamp: string): string {
+    const hashGenerator: Md5 = new Md5();
+    hashGenerator.appendStr(timeStamp);
+    hashGenerator.appendStr(this.privateKey);
+    hashGenerator.appendStr(this.publicKey);
+    const hash: string = hashGenerator.end().toString();
+    return hash;
   }
 }

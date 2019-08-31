@@ -8,13 +8,14 @@ import { AlertService } from 'src/app/services/alert.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  // gerando erro ao fazer a ligacao para outra tela
   @Output() selectedHeroes = new EventEmitter<Array<Character>>();
   @Output() loadGame = new EventEmitter<boolean>();
 
   player1: Character;
   player2: Character;
-  defaultThumbnail = 'assets/img/default_hero.png';
-  vsIcon = 'assets/img/vs-icon.png';
+  bgImage = 'assets/img/bg-img.png';
+  iconImage = 'assets/img/vs.png';
 
   constructor(private alertService: AlertService) { }
 
