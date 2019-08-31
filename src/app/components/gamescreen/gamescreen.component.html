@@ -1,0 +1,11 @@
+<div class="d-flex align-items-center justify-content-space-evenly flex-wrap mt-2" id="game-panel">
+  <div class="col-5 my-2">
+    <app-character [hero]="heroes ? heroes[0] : undefined" player="1" [firstToPlay]="+firstToPlay === 1" [myTurn]="playerTurn === 1"></app-character>
+  </div>
+  <div class="col-2">
+    <!--<app-score></app-score>-->
+  </div>
+  <div class="col-5 my-2">
+    <app-character [hero]="heroes ? heroes[1] : undefined" player="2" [firstToPlay]="+firstToPlay === 2" [myTurn]="playerTurn === 2"></app-character>
+  </div>
+</div>

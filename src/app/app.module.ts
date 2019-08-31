@@ -9,6 +9,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { HttpConfigInterceptor } from './auth/interceptor.module';
+import { BattleComponent } from './components/battle/battle.component';
+import { ScoreComponent } from './components/score/score.component';
+import { CharacterComponent } from './components/character/character.component';
+import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
 
 
 @NgModule({
@@ -16,6 +20,10 @@ import { HttpConfigInterceptor } from './auth/interceptor.module';
     AppComponent,
     HomeComponent,
     SearchComponent,
+    BattleComponent,
+    ScoreComponent,
+    CharacterComponent,
+    GamescreenComponent,
   ],
   imports: [
     BrowserModule,

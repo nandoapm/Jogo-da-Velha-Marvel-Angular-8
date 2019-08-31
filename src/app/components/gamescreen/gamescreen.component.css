@@ -1,0 +1,8 @@
+@media (max-width: 768px) { 
+  #game-panel {
+      align-items: flex-start !important;       
+  }
+  #wrapper {
+      padding: 0 !important;
+  }
+}

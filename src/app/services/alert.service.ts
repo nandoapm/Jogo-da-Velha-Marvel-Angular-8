@@ -35,7 +35,6 @@ export class AlertService {
     });
   }
 
-  //onGameWinner
   winner(hero: Character, playerNumber: number): Observable<SweetAlertResult> {
     return from (Swal.fire({
       title: 'Resultado',
@@ -59,8 +58,6 @@ export class AlertService {
     });
   }
 
-  
-// onGameDraw
   gameDraw(): Observable<SweetAlertResult> {
     return from(Swal.fire({
       title: 'Resultado',

@@ -1,0 +1,11 @@
+<!-- componente home entra aqui -->
+<app-home *ngIf="!startGame" (selectedHeroes)="selectedHeroes($event)" (loadGame)="onLoadGame($event)"></app-home>
+<!-- inicia o componente battle -->
+<div *ngIf="loadGame">
+    <div class="background mt-0 d-flex flex-column justify-content-around" style="min-height: 100vh">
+        <!-- componente panel enrta aqui-->
+        <app-gamescreen [heroes]="heroes" [firstToPlay]="firstToPlay"></app-gamescreen>
+        <!-- componente game entra aqui -->
+        <!--<app-game></app-game>-->
+    </div>
+</div>

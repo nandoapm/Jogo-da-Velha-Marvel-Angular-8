@@ -1,6 +1,6 @@
 <div (focusout)="selectOut()">
     <div class="input-group border-default m-auto">
-      <input type="text" class="form-control text-center search-input text-dark" [formControl]="characterName" (click)="selected()" [placeholder]="placeholder">
+      <input type="text" class="form-control text-center search text-dark" [formControl]="characterName" (click)="selected()" [placeholder]="placeholder">
       
       <div class="input-group-append" [hidden]="!loading">
         <div class="spinner-border text-light" role="status">

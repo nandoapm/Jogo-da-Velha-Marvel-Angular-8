@@ -1,8 +1,18 @@
-.container {
-    background-image: url("./../../../assets/img/bg-home.png");
-    background-repeat: no-repeat;
-    background-size: 100% 740px;
-}
+.background{
+    background-image: url("../../../assets/img/bg-home.png");
+    background-size: 100% 100%;
+  }
+
+  .container {
+      background: transparent;
+      border: 3px solid gold;
+      border-radius: 10px;
+      height: 200px;
+      margin-top: 200px;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
+      text-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
+  }
 
 .main {
     display: flex;
@@ -23,14 +33,15 @@
     width: 200px;
     height: 250px;
     margin-top: 130px;
+    
 }
 
 .imgPlayer {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    margin-top: 80px;
-    margin-right: 30px;
+    margin-top: -120px;
+    box-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
 }
 
 .transform-out {
@@ -54,11 +65,10 @@
     background: #ffffff;
 }
 
-@media (max-width: 768px) {
-    .transform-character-1,
-    .transform-character-2 {
-        height: 300px;
-        width: 500px;
+@media (max-width: 1050px) {
+    .main {
+        flex-direction: column;
+        align-self: center;
     }
 }
 
