@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Character } from 'src/app/models/character';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @Output() selectedHeroes = new EventEmitter<Array<Character>>();
+  @Output() loadGame = new EventEmitter<boolean>();
 
-  constructor() { }
+  player1: Character;
+  player2: Character;
+  defaultThumbnail = 'assets/img/default_hero.png';
+  vsIcon = 'assets/img/vs-icon.png';
+
+  constructor(private alertService: AlertService) { }
 
   ngOnInit() {
+  }
+
+  getCharacter(character: Character, player: number) {
+    if (player === 1) {
+      this.player1 = character ? {...character} : undefined;
+    } else {
+      this.player2 = character ? {...character} : undefined;
+    }
+  }
+
+  startGame() {
+    if (!this.player1 || !this.player2) {
+      this.alertService.error();
+    } else {
+      this.loadGame.emit(true);
+      this.alertService.success(() => {
+        this.selectedHeroes.emit([this.player1, this.player2]);
+      });
+    }
   }
 
 }

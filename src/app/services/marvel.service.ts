@@ -12,6 +12,7 @@ export class MarvelService {
   private ApiUrl = 'https://gateway.marvel.com/v1/public/';
   private publicKey = 'd471b9d853c2fad145cd5dab65761c29';
   private privateKey = '696876de1bc1cc70563bfe7f6bdbdf7b50530370';
+  http: any;
 
   constructor(private httpClient: HttpClient) { }
   getTimeStamp(): string {
@@ -33,7 +34,7 @@ export class MarvelService {
 
   characterByName(name: string, by: string) {
     const url =  this.ApiUrl + 'characters?' + by + '=' + name;
-    return this.httpClient.get(url).pipe(
+    return this.http.get(url).pipe(
       map((response: any) => {
         const characters = new Array<Character>();
         response.data.results.forEach((element: { name: string; thumbnail: { path: string; extension: string; }; }) => {
