@@ -11,7 +11,6 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit {
   
-  // selectedCharacter fará ligação com app-home
   @Output() selectedCharacter = new EventEmitter<Character>();
   @Input() placeholder: string;
 

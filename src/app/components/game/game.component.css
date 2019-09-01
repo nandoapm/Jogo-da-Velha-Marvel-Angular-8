@@ -1,0 +1,31 @@
+.seta-direita {
+    width: 150px;
+    height: 150px;
+    animation: bounce .5s alternate infinite ease-in;
+    margin-left: 200px;
+}
+
+.seta-esquerda {
+    width: 150px;
+    height: 150px;
+    animation: bounce .5s alternate infinite ease-in;
+    margin-right: 200px;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateX(5%);
+    }
+    100% {
+        transform: translateX(-5%);
+    }
+}
+
+@media (max-width: 1100px){
+  .your-turn {
+      display: none;
+  }
+  .col-lg-6 {
+      width: 100%;
+  }
+}

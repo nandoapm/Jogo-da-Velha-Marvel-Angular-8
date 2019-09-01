@@ -18,7 +18,6 @@ export class BattleComponent implements OnInit {
 
   constructor(private gameService: GameService, private alertService: AlertService) { }
   
-  // inicialização da batalha apos o star do componente home
   ngOnInit() {
     this.firstPlay = this.gameService.getFirstPlay();
     this.gameService.getGameResult().subscribe((result) => {

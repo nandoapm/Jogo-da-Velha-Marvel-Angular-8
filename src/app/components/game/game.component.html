@@ -1,0 +1,30 @@
+<div class="row m-0 align-items-center">
+  <div class="col-lg-3 your-turn">
+    <img class="seta-direita" src="../../../assets/img/seta-direita.png" *ngIf="playerTurn === 1">
+  </div>
+  <div class="col-lg-6 col-md-12 m-auto">
+    <div class="d-flex align-items-center flex-column mx-auto my-3">
+      <div class="row justify-content-center">
+        <app-square position="00" [selection]="game.get('00')" (click)="selectSquare('00')"></app-square>
+        <app-square position="01" [selection]="game.get('01')" (click)="selectSquare('01')"></app-square>
+        <app-square position="02" [selection]="game.get('02')" (click)="selectSquare('02')"></app-square>
+      </div>
+
+      <div class="row justify-content-center">
+        <app-square position="10" [selection]="game.get('10')" (click)="selectSquare('10')"></app-square>
+        <app-square position="11" [selection]="game.get('11')" (click)="selectSquare('11')"></app-square>
+        <app-square position="12" [selection]="game.get('12')" (click)="selectSquare('12')"></app-square>
+      </div>
+      
+      <div class="row justify-content-center">
+        <app-square position="20" [selection]="game.get('20')" (click)="selectSquare('20')"></app-square>
+        <app-square position="21" [selection]="game.get('21')" (click)="selectSquare('21')"></app-square>
+        <app-square position="22" [selection]="game.get('22')" (click)="selectSquare('22')"></app-square>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-lg-3 your-turn">
+      <img class="seta-esquerda" src="../../../assets/img/seta-esquerda.png" *ngIf="playerTurn === 2">
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="text-center square-border d-flex justify-content-center align-items-center square-size" [ngClass]="{
+  'border-top-0': position.charAt(0) === '0', 
+  'border-bottom-0': position.charAt(0) === '2',
+  'border-left-0': position.charAt(1) === '0', 
+  'border-right-0': position.charAt(1) === '2' 
+}">
+<span class="m-0">{{selection}}</span>  
+</div>
+

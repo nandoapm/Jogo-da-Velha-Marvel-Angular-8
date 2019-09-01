@@ -3,16 +3,18 @@
     background-size: 100% 100%;
   }
 
-  .container {
-      background: transparent;
-      border: 3px solid gold;
-      border-radius: 10px;
-      height: 200px;
-      margin-top: 200px;
-      text-align: center;
-      box-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
-      text-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
-  }
+.container {
+background: transparent;
+border: 3px solid gold;
+border-radius: 10px;
+height: 200px;
+margin-top: 200px;
+margin-bottom: 20px;
+text-align: center;
+background-image: url("../../../assets/img/gb-card.jpg");
+box-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
+text-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
+}
 
 .main {
     display: flex;
@@ -23,17 +25,29 @@
     width: 400px;
     height: 735px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .section-center {
     width: 200px;
+    height: 200px;
+    margin-top: 30px;
 }
 
 .img-center {
     width: 200px;
     height: 250px;
     margin-top: 130px;
-    
+    animation: bounce .5s alternate infinite ease-in;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(5%);
+    }
+    100% {
+        transform: translateY(-5%);
+    }
 }
 
 .imgPlayer {
@@ -44,39 +58,45 @@
     box-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
 }
 
-.transform-out {
-    filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5));
-}
-
 #start-button {
-    box-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
-    text-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
+    box-shadow: 0px 0px 10px rgba(255, 215, 2, 1);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
     width: 200px;
     height: 50px;
+    font-weight: 500;
     border-radius: 30px;
     color: #ffffff;
     background: #f4c430;
     font-size: 18px;
     border: none;
+    margin-top: 30px;
+    
 }
 
 #start-button:hover {
-    color: #ffd700 !important;
+    color: #fde406 !important;
+    font-weight: 500;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
     background: #ffffff;
 }
 
 @media (max-width: 1050px) {
+    .section {
+        display: flex;
+        flex-direction: column;
+        align-self: auto;
+    }
     .main {
         flex-direction: column;
+        align-content: flex-start;
         align-self: center;
     }
-}
-
-@media (max-width: 992px) {
-    .background {
-        overflow-y: scroll !important;
+    .section-center {
+        margin-top: -400px;
+        align-self: center;
     }
-    #col {
-        height: auto !important;
+
+    #col-2 {
+        margin-top: 250px;
     }
 }

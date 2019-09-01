@@ -13,6 +13,8 @@ import { BattleComponent } from './components/battle/battle.component';
 import { ScoreComponent } from './components/score/score.component';
 import { CharacterComponent } from './components/character/character.component';
 import { GamescreenComponent } from './components/gamescreen/gamescreen.component';
+import { GameComponent } from './components/game/game.component';
+import { SquareComponent } from './components/game/square/square.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { GamescreenComponent } from './components/gamescreen/gamescreen.componen
     ScoreComponent,
     CharacterComponent,
     GamescreenComponent,
+    GameComponent,
+    SquareComponent,
   ],
   imports: [
     BrowserModule,

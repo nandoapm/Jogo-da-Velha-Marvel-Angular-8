@@ -8,8 +8,8 @@ import { AlertService } from 'src/app/services/alert.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  // gerando erro ao fazer a ligacao para outra tela
-  @Output() selectedHeroes = new EventEmitter<Array<Character>>();
+  
+  @Output() selectedCharacter = new EventEmitter<Array<Character>>();
   @Output() loadGame = new EventEmitter<boolean>();
 
   player1: Character;
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.loadGame.emit(true);
       this.alertService.success(() => {
-        this.selectedHeroes.emit([this.player1, this.player2]);
+        this.selectedCharacter.emit([this.player1, this.player2]);
       });
     }
   }

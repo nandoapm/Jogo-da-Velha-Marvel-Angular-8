@@ -1,22 +1,22 @@
-<!-- este componente possui o registro da tela inicial -->
+
 <div class="background mt-0 d-flex flex-column justify-content-around">
     <div class="main">
-        <div class="section" id="col">
-
+        <div class="section" id="col-1">
             <div class="container">
-                <img class="imgPlayer" [src]="player1 ? player1.image : bgImage">
+                <img class="imgPlayer" [src]="player1 ? player1.image : bgImage"><br><br>
+                <app-search (selectedCharacter)="getCharacter($event, 1)" placeholder="PERSONAGEM 1"></app-search>
             </div>
-            <app-search (selectedHero)="getCharacter($event, 1)" placeholder="PERSONAGEM 1"></app-search>
-            
         </div>
+
         <div class="section-center">
             <img class="img-center" src="../../../../assets/img/vs.png">
             <button class="btn" type="button"  id="start-button" (click)="startGame()">COMEÇAR BATALHA</button>
         </div>
-        <div class="section" id="col">
+
+        <div class="section" id="col-2">
             <div class="container">
-                <img class="imgPlayer" [src]="player2 ? player2.image : bgImage">
-                <app-search (selectedHero)="getCharacter($event, 2) " placeholder="PERSONAGEM 2"></app-search>
+                <img class="imgPlayer" [src]="player2 ? player2.image : bgImage"><br><br>
+                <app-search (selectedCharacter)="getCharacter($event, 2) " placeholder="PERSONAGEM 2"></app-search>
             </div>
             
         </div>

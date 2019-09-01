@@ -1,0 +1,41 @@
+.square-border {
+  border: 5px inset gold;
+  text-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
+}
+
+span {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-weight: 900;
+  font-size: 100px;
+  color: gold;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 576px) { 
+  .square-size {
+      height: 100px;
+      width: 100px;
+      background: red;
+  }
+}
+
+@media (min-width: 576px) { 
+  .square-size {
+      height: 110px;
+      width: 110px;
+  }
+}
+
+@media (min-width: 768px) { 
+  .square-size {
+      height: 120px;
+      width: 120px;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .square-size {
+      height: 130px;
+      width: 130px;
+  }
+}

@@ -7,7 +7,7 @@ import { Character } from 'src/app/models/character';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent implements OnInit {
-  // herox vai para o componente game
+ 
   @Input() character: Character;
   @Input() turn: boolean;
   @Input() firstPlay: boolean;
