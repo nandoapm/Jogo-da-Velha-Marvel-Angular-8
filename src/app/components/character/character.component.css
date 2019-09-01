@@ -12,12 +12,15 @@ img {
   align-items: center;
 }
 
-.position {
-  text-align: center;
+h2 {
+  max-height: 50px;
+  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
 }
 
-h2 {
-  max-height: 72px;
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center
 }
 
 .border {
@@ -48,7 +51,6 @@ h2 {
     font-size: 18px;
     max-height: 62px;
     overflow: hidden;
-    color: rebeccapurple;
   }
 
   h1 {

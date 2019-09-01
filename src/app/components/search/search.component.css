@@ -1,3 +1,4 @@
+
 .input-group {
   max-width: 460px;
 }
@@ -12,13 +13,14 @@
   border: none;      
   font-weight: bold;
   color: gold !important;
-  font-size: 1.5em;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
   text-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
 }
 
 .spinner-grow {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 ::placeholder{
@@ -27,8 +29,9 @@
 
 li {
   border-top: none;
-  text-transform: uppercase;
   border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
 }
 
 li:hover {

@@ -4,7 +4,7 @@
 }
 
 span {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: 'Permanent Marker', cursive;
   font-weight: 900;
   font-size: 100px;
   color: gold;
@@ -15,7 +15,6 @@ span {
   .square-size {
       height: 100px;
       width: 100px;
-      background: red;
   }
 }
 

@@ -4,19 +4,19 @@
         <div class="section" id="col-1">
             <div class="container">
                 <img class="imgPlayer" [src]="player1 ? player1.image : bgImage"><br><br>
-                <app-search (selectedCharacter)="getCharacter($event, 1)" placeholder="PERSONAGEM 1"></app-search>
+                <app-search (selectedCharacter)="getCharacter($event, 1)" placeholder="Personagem 1"></app-search>
             </div>
         </div>
 
         <div class="section-center">
             <img class="img-center" src="../../../../assets/img/vs.png">
-            <button class="btn" type="button"  id="start-button" (click)="startGame()">COMEÇAR BATALHA</button>
+            <button class="btn" type="button"  id="start-button" (click)="startGame()">Iniciar</button>
         </div>
 
         <div class="section" id="col-2">
             <div class="container">
                 <img class="imgPlayer" [src]="player2 ? player2.image : bgImage"><br><br>
-                <app-search (selectedCharacter)="getCharacter($event, 2) " placeholder="PERSONAGEM 2"></app-search>
+                <app-search (selectedCharacter)="getCharacter($event, 2) " placeholder="Personagem 2"></app-search>
             </div>
             
         </div>
