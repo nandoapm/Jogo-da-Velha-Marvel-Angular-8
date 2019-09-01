@@ -7,10 +7,10 @@ import { Character } from 'src/app/models/character';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent implements OnInit {
-
-  @Input() hero: Character;
-  @Input() myTurn: boolean;
-  @Input() firstToPlay: boolean;
+  // herox vai para o componente game
+  @Input() character: Character;
+  @Input() turn: boolean;
+  @Input() firstPlay: boolean;
   @Input() player: number;
  
   bgImage = 'assets/img/bg-img.png';

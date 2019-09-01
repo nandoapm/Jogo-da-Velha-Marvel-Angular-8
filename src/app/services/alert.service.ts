@@ -13,8 +13,8 @@ export class AlertService {
   success(callback) {
     let timerInterval;
     Swal.fire({
-      title: 'Tudo pronto!',
       html: 'Seu jogo comecará em <strong></strong> segundos.',
+      imageUrl: 'https://media.giphy.com/media/fA6opG8tgo2KQ/giphy.gif',
       timer: 5000,
       onBeforeOpen: () => {
         Swal.showLoading();
@@ -38,14 +38,14 @@ export class AlertService {
   winner(hero: Character, playerNumber: number): Observable<SweetAlertResult> {
     return from (Swal.fire({
       title: 'Resultado',
-      text: 'Jogador número: ' + playerNumber + ' - ' + hero.name + ' ganhou!',
+      text: hero.name + ' ganhou!',
       imageUrl: hero.image,
       imageWidth: 400,
       imageHeight: 300,
       imageAlt: hero.name,
       animation: false,
       customClass: 'object-cover',
-      confirmButtonText: 'Revanche',
+      confirmButtonText: 'Jogar Novamente',
       allowOutsideClick: false
     }));
   }
@@ -53,19 +53,15 @@ export class AlertService {
   error() {
     Swal.fire({
       type: 'error',
-      title: 'Oops...',
-      text: 'Atenção! Parece que há algo de errado com o herói selecionado.'
+      title: 'Alerta',
+      text: 'Necessário selecionar os personagens!'
     });
   }
 
   gameDraw(): Observable<SweetAlertResult> {
     return from(Swal.fire({
       title: 'Resultado',
-      text: 'Acredite se quiser, deu velha!',
-      imageUrl: 'https://media.giphy.com/media/fNBFa6NCMeZJm/giphy.gif',
-      imageWidth: 400,
-      imageHeight: 300,
-      imageAlt: 'facepalm',
+      text: 'Oops... Empatou!!!',
       animation: false,
       confirmButtonText: 'Jogar Novamente',
       allowOutsideClick: false

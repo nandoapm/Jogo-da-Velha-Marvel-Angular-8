@@ -1,9 +1,9 @@
-<div class="d-flex justify-content-start m-3" [ngClass]="{'flex-row-reverse': +player === 2}" id="hero-card">
-
-  <img [src]="hero ? hero.image : bgImage" class="rounded-circle border my-2" [ngClass]="{'player-turn-animation': myTurn}"/>
+<h1 id="firstPlay" class="position font-weight-bold text-white">{{firstPlay? 'X' : 'O'}}</h1>
+<div id="characterCard" class="d-flex justify-content-start m-3" [ngClass]="{'flex-row-reverse': +player === 2}">
   
-  <div class="d-flex flex-column justify-content-between align-items-center" [ngClass]="{'ml-3': +player === 1, 'mr-3': +player === 2}" id="hero-info">
-    <h2 class="text-white font-weight-bold text-center my-2">{{hero?.name}}</h2>
-    <h1 class="font-weight-bold text-white" id="first-to-play">{{firstToPlay? 'X' : 'O'}}</h1>
-  </div>
+  <img [src]="character ? character.image : bgImage">
+  <div id="characterInfo" class="d-flex flex-column justify-content-between align-items-center" [ngClass]="{'ml-3': +player === 1, 'mr-3': +player === 2}"></div>
 </div>
+
+<h2 class="nomeCharacter text-white font-weight-bold text-center my-2">{{character?.name}}</h2>
+

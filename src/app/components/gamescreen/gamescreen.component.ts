@@ -9,8 +9,8 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class GamescreenComponent implements OnInit {
   
-  @Input() heroes: Array<Character>;
-  @Input() firstToPlay: number;
+  @Input() characteres: Array<Character>;
+  @Input() firstPlay: number;
   playerTurn: number;
   
   constructor(private gameService: GameService) { }

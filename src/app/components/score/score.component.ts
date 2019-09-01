@@ -9,7 +9,7 @@ import { GameService } from 'src/app/services/game.service';
 export class ScoreComponent implements OnInit {
 
   score: Array<number>;
-  // utiliza o game.service
+
   constructor(private gameService: GameService) { }
 
   ngOnInit() {

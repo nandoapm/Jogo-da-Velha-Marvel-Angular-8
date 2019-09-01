@@ -10,8 +10,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  // verificar o output
-  @Output() selectedHero = new EventEmitter<Character>();
+  
+  // selectedCharacter fará ligação com app-home
+  @Output() selectedCharacter = new EventEmitter<Character>();
   @Input() placeholder: string;
 
   characterName = new FormControl('');
@@ -37,7 +38,7 @@ export class SearchComponent implements OnInit {
         this.exgCharacter(text);
       } else if (text === '') {
         this.characteres = undefined;
-        this.selectedHero.emit(undefined);
+        this.selectedCharacter.emit(undefined);
       }
     });
   }
@@ -49,7 +50,7 @@ export class SearchComponent implements OnInit {
         this.apiMarvel.getCharacter(characterName, 'nameStartsWith').subscribe((characterList: Array<Character>) => {
           this.characteres = characterList;
           this.loading = false;
-          this.selectedHero.emit(undefined);
+          this.selectedCharacter.emit(undefined);
         });
       } else {
         this.selectCharacter(characteres[0]);
@@ -60,7 +61,7 @@ export class SearchComponent implements OnInit {
 
   selectCharacter(character: Character) {
     this.characterName.setValue((this.selectedName = character.name));
-    this.selectedHero.emit(character);
+    this.selectedCharacter.emit(character);
     this.characteres = undefined;
   }
 

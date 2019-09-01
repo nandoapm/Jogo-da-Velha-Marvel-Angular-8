@@ -10,21 +10,20 @@ import { Character } from 'src/app/models/character';
 })
 export class BattleComponent implements OnInit {
 
-  heroes: Array<Character>;
+  characteres: Array<Character>;
   startGame = false;
-  firstToPlay: number;
+  firstPlay: number;
   winner: number;
   loadGame = false;
 
   constructor(private gameService: GameService, private alertService: AlertService) { }
-
-
+  
   // inicialização da batalha apos o star do componente home
   ngOnInit() {
-    this.firstToPlay = this.gameService.getFirstToPlay();
-    this.gameService.getTicTacToeResult().subscribe((result) => {
+    this.firstPlay = this.gameService.getFirstPlay();
+    this.gameService.getGameResult().subscribe((result) => {
       if (result.winner) {
-        this.alertService.winner(this.heroes[result.winner - 1], result.winner).subscribe(() => {
+        this.alertService.winner(this.characteres[result.winner - 1], result.winner).subscribe(() => {
           this.startNewGame();
         });
       } else if (result.gameOver) {
@@ -36,17 +35,17 @@ export class BattleComponent implements OnInit {
   }
   // inicia uma nova batalha
   startNewGame() {
-    this.gameService.initializeGame();
-    this.firstToPlay = this.gameService.getFirstToPlay();
+    this.gameService.startGame();
+    this.firstPlay = this.gameService.getFirstPlay();
   }
   // recarrega uma nova batalha
   onLoadGame() {
     this.loadGame = true;
   }
 
-  // seleção do personagem
-  selectedHeroes(heroes: Array<Character>) {
-    this.heroes = [...heroes];
+  // personagem selecionados
+  selectedCharacter(heroes: Array<Character>) {
+    this.characteres = [...heroes];
     this.startGame = true;
   }
 

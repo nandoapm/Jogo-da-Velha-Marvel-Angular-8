@@ -6,26 +6,27 @@ import { Subject, BehaviorSubject } from 'rxjs';
 })
 export class GameService {
 
-  private gameBoard: Map<string, string>;
-  private gameBoardSubject: Subject<Map<string, string>>;
+  private game: Map<string, string>;
+  private gameSubject: Subject<Map<string, string>>;
   private turn: string;
   private playerTurnSubject: BehaviorSubject<number>;
   private firstToPlay: number;
-  private ticTacToeResult: Subject<any>;
+  private gameResult: Subject<any>;
   private score: Array<number>;
   private scoreSubject: BehaviorSubject<Array<number>>;
 
   constructor() {
     this.score = new Array<number>(0, 0);
-    this.ticTacToeResult = new Subject<any>();
-    this.gameBoardSubject = new BehaviorSubject<Map<string, string>>(this.gameBoard);
+    this.gameResult = new Subject<any>();
+    this.gameSubject = new BehaviorSubject<Map<string, string>>(this.game);
     this.scoreSubject = new BehaviorSubject<Array<number>>(this.score);
-    this.initializeGame();
+    this.startGame();
   }
 
-  initializeGame() {
-    this.initializeGameBoard();
-    this.firstToPlay = this.whoIsGoingToStart();
+  // inicialização do jogo
+  startGame() {
+    this.initializeGame();
+    this.firstToPlay = this.whoIsPlay();
     this.turn = 'X';
 
     if (!this.playerTurnSubject) {
@@ -35,34 +36,35 @@ export class GameService {
     }
   }
 
-  initializeGameBoard() {
-    this.gameBoard = new Map<string, string>();
+  initializeGame() {
+    this.game = new Map<string, string>();
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        this.gameBoard.set((i.toString().concat(j.toString())), '');
+        this.game.set((i.toString().concat(j.toString())), '');
       }
     }
-    this.gameBoardSubject.next(this.gameBoard);
+    this.gameSubject.next(this.game);
   }
 
-  whoIsGoingToStart() {
+  whoIsPlay() {
     const randomNumber = Math.floor(Math.random() * 10) + 1;
     return randomNumber % 2 === 0 ? 1 : 2;
   }
 
-  getGameBoard() {
-    return this.gameBoardSubject.asObservable();
+  // obtendo propriedades do jogo
+  getGame() {
+    return this.gameSubject.asObservable();
   }
 
-  getTicTacToeResult() {
-    return this.ticTacToeResult.asObservable();
+  getGameResult() {
+    return this.gameResult.asObservable();
   }
 
   getPlayerTurn() {
     return this.playerTurnSubject.asObservable();
   }
 
-  getFirstToPlay() {
+  getFirstPlay() {
     return this.firstToPlay;
   }
 
@@ -70,55 +72,8 @@ export class GameService {
     return this.scoreSubject.asObservable();
   }
 
-  setValueToGameBoard(key: string) {
-
-    if (this.gameBoard.get(key) === '') {
-      this.gameBoard.set(key, this.turn);
-      this.gameBoardSubject.next(this.gameBoard);
-      this.checkBoard();
-      this.playerTurnSubject.next(this.getCurrentPlayer());
-    }
-  }
-
-  checkBoard() {
-
-    if (this.isWinner(this.turn, this.gameBoard)) {
-      const winnerPlayer = this.getCurrentPlayer();
-      this.score[winnerPlayer - 1] = this.score[winnerPlayer - 1] + 1;
-      this.ticTacToeResult.next({winner: winnerPlayer});
-      this.scoreSubject.next(this.score);
-    } else if (this.isDraw(this.gameBoard)) {
-      this.ticTacToeResult.next({gameOver: true});
-    } else {
-      this.turn = this.turn === 'X' ? 'O' : 'X';
-    }
-  }
-
-  getCurrentPlayer() {
-    const secondToPlay = this.firstToPlay === 1 ? 2 : 1;
-    return this.turn === 'X' ? this.firstToPlay : secondToPlay;
-  }
-
-  isWinner(player: string, gameBoard: Map<string, string>) {
-    for (const pattern of this.getWinnerCombination()) {
-      if (gameBoard.get(pattern[0]) === player && gameBoard.get(pattern[1]) === player && gameBoard.get(pattern[2]) === player) {
-        return true;
-      }
-    }
-  }
-
-  isDraw(gameBoard: Map<string, string>) {
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (gameBoard.get(i.toString().concat(j.toString())) === '') {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-
-  private getWinnerCombination() {
+  // verificando resultados do jogo
+  private combination() {
     return [
       ['00', '01', '02'],
       ['10', '11', '12'],
@@ -129,5 +84,52 @@ export class GameService {
       ['00', '11', '22'],
       ['20', '11', '02']
     ];
+  }
+
+  winner(player: string, game: Map<string, string>) {
+    for (const pattern of this.combination()) {
+      if (game.get(pattern[0]) === player && game.get(pattern[1]) === player && game.get(pattern[2]) === player) {
+        return true;
+      }
+    }
+  }
+
+  isDraw(game: Map<string, string>) {
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (game.get(i.toString().concat(j.toString())) === '') {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  currentPlayer() {
+    const secondToPlay = this.firstToPlay === 1 ? 2 : 1;
+    return this.turn === 'X' ? this.firstToPlay : secondToPlay;
+  }
+
+  checkGame() {
+    if (this.winner(this.turn, this.game)) {
+      const winnerPlayer = this.currentPlayer();
+      this.score[winnerPlayer - 1] = this.score[winnerPlayer - 1] + 1;
+      this.gameResult.next({winner: winnerPlayer});
+      this.scoreSubject.next(this.score);
+    } else if (this.isDraw(this.game)) {
+      this.gameResult.next({gameOver: true});
+    } else {
+      this.turn = this.turn === 'X' ? 'O' : 'X';
+    }
+  }
+
+  valueGame(key: string) {
+
+    if (this.game.get(key) === '') {
+      this.game.set(key, this.turn);
+      this.gameSubject.next(this.game);
+      this.checkGame();
+      this.playerTurnSubject.next(this.currentPlayer());
+    }
   }
 }

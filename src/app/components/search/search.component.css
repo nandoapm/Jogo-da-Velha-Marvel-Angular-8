@@ -2,7 +2,11 @@
   max-width: 460px;
 }
 
-.search {
+.input-group-append {
+  margin-top: 10px;
+}
+
+.search-input {
   background-color: transparent;
   border-radius: 0;
   border: none;      
@@ -10,7 +14,11 @@
   color: gold !important;
   font-size: 1.5em;
   text-shadow: 0px 0px 10px rgba(255, 215, 0, 1);
-  margin-top: 20px;
+}
+
+.spinner-grow {
+  width: 40px;
+  height: 40px;
 }
 
 ::placeholder{
